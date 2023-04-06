@@ -1,4 +1,5 @@
 // Assignment code here
+
 // Setting Arrays characters that the generator can use
 var numberChar = ["0","1","2","3", "4", "5", "6", "7", "8", "9"];
 var upperCase= ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
@@ -73,12 +74,44 @@ function getRandom(arr) {
   return randomElement
 }
 
-// Generates password output
+// Generates password output function and var supplied
 function generatePassword () {
-  var options = getPasswordOptions ();
-  var result = [];
-  var possibleChar = [];
-  var guaranteedChar = [];
+var options = getPasswordOptions ();
+
+var result = [];
+var possibleChar = [];
+var guaranteedChar = [];
+
+//If Statement for "if" User doesn't choose a option given
+if (!options) return null;
+if (options.hasNumberChar) {
+  possibleChar = possibleChar.concat (numberChar);
+  guaranteedChar.push (getRandom(numberChar));
+}
+
+if (options.hasUpperCase) {
+  possibleChar = possibleChar.concat (upperCase);
+  guaranteedChar.push (getRandom(upperCase));
+}
+if (options.hasLowerCase) {
+  possibleChar = possibleChar.concat (lowerCase);
+  guaranteedChar.push (getRandom(lowerCase));
+}
+if (options.hasSpecialChar) {
+  possibleChar = possibleChar.concat (specialChar);
+  guaranteedChar.push (getRandom(specialChar));
+}
+ for (var i=0;i< options.length; i++) {
+  var possibleCharacter = getRandom (possibleChar);
+  result.push (possibleCharacter);
+ }
+
+ for ( var i = 0; i<guaranteedChar.length; i++) {
+  result[i] = guaranteedChar[i]
+ }
+ return result.join("");
+
+}
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
