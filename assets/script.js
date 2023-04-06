@@ -13,6 +13,7 @@ var hasLowerCase;
 var hasSpecialChar;
 
 // Prompt to ask for character length within generate password function
+
 function getPasswordOptions () {
   //parseInt method takes values in string and turns it to an integer/number
   var length = parseInt (prompt("How many characters would you like in your password? "));
@@ -29,6 +30,28 @@ function getPasswordOptions () {
     alert ("The password length must be less than 128 characters!");
     return null;
   }
+
+//User Input to confirm true or false for what will be in passsword//
+
+var hasNumberChar =confirm ("Click OK if you want numbers in your password?")
+
+var hasUpperCase  =confirm ("Click OK if you want Upper Case letters in your password?")
+
+var hasLowerCase  =confirm ("Click OK if you want Lower Case letters in your password?")
+
+var hasSpecialChar  =confirm ("Click OK if you want Special Characters in your password?")
+
+//Checking to see if the user didn't click OK for any of the options
+
+if (
+  hasNumberChar === false && 
+  hasUpperCase === false &&
+  hasLowerCase === false &&
+  hasSpecialChar === false 
+){
+  alert ("Must select at least one character type!");
+  return null;
+}
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
