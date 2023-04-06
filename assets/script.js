@@ -53,6 +53,33 @@ if (
   return null;
 }
 
+//Variable to store all of User Inputs in Password Options
+var passwordOptions = {
+  //key value pairs
+  length: length,
+  hasNumberChar: hasNumberChar,
+  hasUpperCase: hasUpperCase,
+  hasLowerCase: hasLowerCase,
+  hasSpecialChar: hasSpecialChar
+}
+return passwordOptions;
+}
+
+//Takes a array and generates a random number between 0 and length of the array Returns element 
+//at the random index.
+function getRandom(arr) {
+  var randomIndex = Math.floor(Math.random() * arr.length);
+  var randomElement = arr[randomIndex];
+  return randomElement
+}
+
+// Generates password output
+function generatePassword () {
+  var options = getPasswordOptions ();
+  var result = [];
+  var possibleChar = [];
+  var guaranteedChar = [];
+
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 
